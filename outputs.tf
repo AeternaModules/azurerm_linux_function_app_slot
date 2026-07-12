@@ -1,3 +1,7 @@
+output "linux_function_app_slots_id" {
+  description = "Map of id values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.id }
+}
 output "linux_function_app_slots_app_settings" {
   description = "Map of app_settings values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
   value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.app_settings }
