@@ -8,16 +8,16 @@ output "linux_function_app_slots_app_settings" {
 }
 output "linux_function_app_slots_auth_settings" {
   description = "Map of auth_settings values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
-  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.auth_settings if v.auth_settings != null && length(v.auth_settings) > 0 }
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => one(v.auth_settings) if v.auth_settings != null && length(v.auth_settings) > 0 }
   sensitive   = true
 }
 output "linux_function_app_slots_auth_settings_v2" {
   description = "Map of auth_settings_v2 values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
-  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.auth_settings_v2 if v.auth_settings_v2 != null && length(v.auth_settings_v2) > 0 }
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => one(v.auth_settings_v2) if v.auth_settings_v2 != null && length(v.auth_settings_v2) > 0 }
 }
 output "linux_function_app_slots_backup" {
   description = "Map of backup values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
-  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.backup if v.backup != null && length(v.backup) > 0 }
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => one(v.backup) if v.backup != null && length(v.backup) > 0 }
   sensitive   = true
 }
 output "linux_function_app_slots_builtin_logging_enabled" {
@@ -84,7 +84,7 @@ output "linux_function_app_slots_https_only" {
 }
 output "linux_function_app_slots_identity" {
   description = "Map of identity values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
-  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "linux_function_app_slots_key_vault_reference_identity_id" {
   description = "Map of key_vault_reference_identity_id values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
@@ -124,7 +124,7 @@ output "linux_function_app_slots_service_plan_id" {
 }
 output "linux_function_app_slots_site_config" {
   description = "Map of site_config values across all linux_function_app_slots, keyed the same as var.linux_function_app_slots"
-  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => v.site_config if v.site_config != null && length(v.site_config) > 0 }
+  value       = { for k, v in azurerm_linux_function_app_slot.linux_function_app_slots : k => one(v.site_config) if v.site_config != null && length(v.site_config) > 0 }
   sensitive   = true
 }
 output "linux_function_app_slots_site_credential" {
